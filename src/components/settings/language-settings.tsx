@@ -14,8 +14,10 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useAppStore } from '@/lib/store/app-store';
 import { resolveUiLang, t } from '@/lib/i18n';
-import type { Lang, LangPref } from '@/lib/i18n';
+import type { Lang } from '@/lib/types';
 import { cn } from '@/lib/utils';
+
+type LangPref = 'auto' | Lang;
 
 // ============================================================
 // SehatAI — Language Settings (Phase 2)

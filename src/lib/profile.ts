@@ -294,7 +294,7 @@ export function sanitizeProfile(input: Partial<HealthProfile> | null | undefined
   // pregnant: only meaningful if sex === 'female'
   out.pregnant = out.sex === 'female' ? Boolean(out.pregnant) : false;
   // iceContacts
-  out.iceContacts = Array.isArray(out.iceContacts) ? out.iceContacts.slice(0, 3).map(sanitizeIce).filter(Boolean) : [];
+  out.iceContacts = Array.isArray(out.iceContacts) ? (out.iceContacts.slice(0, 3).map(sanitizeIce).filter(Boolean) as IceContact[]) : [];
   out.updatedAt = typeof out.updatedAt === 'number' && Number.isFinite(out.updatedAt) ? out.updatedAt : Date.now();
   return out;
 }
@@ -350,7 +350,7 @@ export function loadJournal(): JournalEntry[] {
     if (!raw) return [];
     const parsed = JSON.parse(raw) as unknown;
     if (!Array.isArray(parsed)) return [];
-    return parsed.map(sanitizeEntry).filter(Boolean);
+    return parsed.map(sanitizeEntry).filter(Boolean) as JournalEntry[];
   } catch {
     return [];
   }

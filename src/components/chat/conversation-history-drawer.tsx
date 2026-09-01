@@ -174,7 +174,7 @@ export function ConversationHistoryDrawer() {
             : {}),
           ...(m.emergency ? { emergency: true as const } : {}),
         }));
-        loadConversation(chatMessages, conv.id, convLang);
+        loadConversation(chatMessages as any, conv.id, convLang);
         setConversationId(conv.id);
       } catch {
         setError(true);

@@ -29,7 +29,6 @@ if (!process.env.NEXTAUTH_SECRET) {
 const prisma = db as unknown as PrismaClient;
 
 export const authOptions: NextAuthOptions = {
-  // @ts-expect-error — PrismaAdapter expects a PrismaClient; our db is one
   adapter: PrismaAdapter(prisma as any),
   session: { strategy: 'jwt', maxAge: 30 * 24 * 60 * 60 }, // 30 days
   pages: {

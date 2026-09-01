@@ -9,7 +9,7 @@ import {
   X,
   Send,
   HelpCircle,
-  Body,
+  User,
   Clock,
   Thermometer,
   Activity,

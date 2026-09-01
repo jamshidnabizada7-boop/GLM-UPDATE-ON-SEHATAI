@@ -47,6 +47,9 @@ export async function POST(req: NextRequest) {
 
   try {
     const zai = await getZAI();
+    if (!zai) {
+      return NextResponse.json({ text: '', error: 'voice transcription unavailable' });
+    }
     const resp = (await withTimeout(
       zai.audio.asr.create({ file_base64: audioBase64 }),
       45000,

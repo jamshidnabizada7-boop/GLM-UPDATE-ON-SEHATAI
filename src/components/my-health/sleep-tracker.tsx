@@ -128,7 +128,7 @@ export function SleepTracker({ lang, className }: SleepTrackerProps) {
       .slice(-7)
       .map((e) => ({
         date: dayLabel(e.date, lang),
-        dayNum: dayNum(e.date, lang),
+        dayNum: dayNum(e.date),
         hours: e.hours,
         quality: e.quality,
       }));
@@ -373,7 +373,7 @@ export function SleepTracker({ lang, className }: SleepTrackerProps) {
               <li key={idx} className="flex items-center gap-2 rounded-md border border-border/60 bg-background/40 p-1.5">
                 <Moon className="h-3 w-3 shrink-0 text-indigo-500" aria-hidden />
                 <span className="text-[11px] font-bold text-foreground">{e.hours}h</span>
-                <span className="text-[10px] text-muted-foreground">{dayLabel(e.date, lang)} {dayNum(e.date, lang)}</span>
+                <span className="text-[10px] text-muted-foreground">{dayLabel(e.date, lang)} {dayNum(e.date)}</span>
                 <span className={cn('text-[10px] font-bold', QUALITY_LABELS[e.quality]?.color)}>
                   {Array.from({ length: e.quality }).map((_, i) => '★').join('')}
                 </span>
